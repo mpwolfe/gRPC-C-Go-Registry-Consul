@@ -31,6 +31,7 @@ The programs are as follows:
 
     - customerServer.cpp the gRPC server in c++
     - customerClient.cpp  the command line gRPC client written in c++
+    
     - consul-registry.go    the Registry for gRPC client/server and REST api calls to consul by Hashicorp in go
     - customerWeb.go     the gRPC web based client written in go
 
@@ -40,12 +41,18 @@ The go programs are using additional software:
     google.golang.org/grpc              - gRPC for go
     goji.io, goji.io/pat                        - for web interface
     consulapi  "github.com/hashicorp/consul/api   - consul REST api for the registry
-
+   
+The home directory for the go programs:   /src/google.golang.org/grpc/examples/customer
+The go programs can use genprotoc.sh which creates the customer.pb.go
+and moves it to  customer/customer.pb.go
+    
 The c++ programss are using additional software:
 
-    SQLITE3 as a shared library with embedded c/c++ api
-    protocol buffers version 3
-    gRPC for c++
+    - SQLITE3 as a shared library with embedded c/c++ api
+    - protocol buffers version 3
+    - gRPC for c++
+
+The home directory for the C++ programs:   /grpc/examples/cpp/customer
 
 To get a feel for how the software fits together we do the following.
 Note: all clients and servers are configured for localhost 127.0.0.1
