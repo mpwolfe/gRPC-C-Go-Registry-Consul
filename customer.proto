@@ -1,0 +1,120 @@
+// Copyright 2015, Google Inc.
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
+//
+//     * Redistributions of source code must retain the above copyright
+// notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above
+// copyright notice, this list of conditions and the following disclaimer
+// in the documentation and/or other materials provided with the
+// distribution.
+//     * Neither the name of Google Inc. nor the names of its
+// contributors may be used to endorse or promote products derived from
+// this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "RouteGuideProto";
+option objc_class_prefix = "RTG";
+
+package customer;
+
+// ******* Services **************
+
+// MPW test services
+// Server register service with registry
+service Register {
+	rpc RegisterService (RegisterRequest) returns (RegisterReply) {}
+}
+
+service Login {
+   // check user login credentials
+   rpc UserLogin (LoginRequest) returns (LoginReply) {}
+}
+
+service Customer {
+	rpc CustomerInfo (InfoRequest) returns (InfoReply) {}
+}
+
+service Customerdetail {
+	rpc Custdetail (detailRequest) returns (stream detailReply) {}
+}
+	
+// End Services
+
+
+// server will register and deregister
+// client will try to retrieve microservice from registry 
+
+// Register service 
+message RegisterRequest {
+	string service = 1;
+	string domain  = 2;
+	string address = 3;
+	int32  port    = 4;
+	string cmd     = 5;      // PUT, GET, DELETE
+}
+
+// Registry Service response 
+message RegisterReply {
+	string message = 1;
+ 	string address = 2;
+}
+
+
+// microservice services
+message LoginRequest {
+   string user = 1;
+   string password = 2;
+}
+
+message LoginReply {
+   string message = 1;
+}
+
+message InfoRequest {
+	int32 custid = 1;
+}
+
+message InfoReply {
+	int32 custid = 1;
+	string fname = 2;
+	string lname = 3;
+	string email = 4;
+	string phone = 5;
+	string street = 6;
+	string city  = 7;
+	string state = 8;
+	string zip   = 9;
+        string message = 10;
+}
+
+message detailRequest {
+	int32 custid = 1;
+}
+
+message detailReply {
+	int32 custid = 1;
+	string fname = 2;
+	string lname = 3;
+	string product = 4;
+	float   price = 5;
+	string desc = 6;
+}
