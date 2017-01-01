@@ -43,8 +43,9 @@ The go programs are using additional software:
     consulapi  "github.com/hashicorp/consul/api   - consul REST api for the registry
    
 The home directory for the go programs:   /src/google.golang.org/grpc/examples/customer
+the .html files are located in the sub-directory: /src/google.golang.org/grpc/examples/customer/templates
 The go programs can use genprotoc.sh which creates the customer.pb.go
-and moves it to  customer/customer.pb.go
+and moves it to sub-directory:  customer/customer.pb.go
     
 The c++ programs are using additional software:
 
