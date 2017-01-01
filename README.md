@@ -46,7 +46,7 @@ The home directory for the go programs:   /src/google.golang.org/grpc/examples/c
 The go programs can use genprotoc.sh which creates the customer.pb.go
 and moves it to  customer/customer.pb.go
     
-The c++ programss are using additional software:
+The c++ programs are using additional software:
 
     - SQLITE3 as a shared library with embedded c/c++ api
     - protocol buffers version 3
