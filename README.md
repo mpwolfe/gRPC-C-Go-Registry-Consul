@@ -63,8 +63,10 @@ Note: all clients and servers are configured for localhost 127.0.0.1
   
 6. CTRL-C the customerServer which will deregister the services
 
-Note: the key for the registry is: service + "/" + domain     ex: Login/i52400deb
-         the value is:                     address + ":" + port         ex: 127.0.0.1:50051
+Note: 
+      -		the key for the registry is: service + "/" + domain     ex: Login/i52400deb
+      -   	the value is:                     address + ":" + port         ex: 127.0.0.1:50051
+
 
 
 
